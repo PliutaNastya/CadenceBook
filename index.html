@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250119142734">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250119202142">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
 							<li class="menu__item"><a href="#" data-goto-header data-goto=".book" class="menu__link">The Book</a></li>
 							<li class="menu__item"><a href="#" data-goto-header data-goto=".videos" class="menu__link">Videos</a></li>
 							<li class="menu__item"><a href="#" data-goto-header data-goto=".reviews" class="menu__link">Reviews</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Meet Pete</a></li>
+							<li class="menu__item"><a href="#" data-goto-header data-goto=".about-author" class="menu__link">Meet Pete</a></li>
 							<li class="menu__item"><a href="#" class="menu__link">Extra Materials</a></li>
 						</ul>
 					</nav>
@@ -47,9 +47,6 @@
 		</header>
 		<main class="page">
 			<section class="page__hero hero">
-				<div class="hero__bg">
-					<img src="img/hero/hero_bg_02.webp" alt="Image">
-				</div>
 				<div class="hero__container">
 					<div class="hero__content">
 						<h2 class="hero__title">Cadence</h2>
@@ -60,6 +57,9 @@
 						<div class="hero__award">
 							<img src="img/hero/award.webp" alt="Image">
 						</div>
+					</div>
+					<div class="hero__img" data-da=".hero__content,767.98,2">
+						<img src="img/hero/hero__img.webp" alt="Image">
 					</div>
 				</div>
 			</section>
@@ -139,17 +139,41 @@
 				<div class="videos__container">
 					<h2 class="videos__title title">Videos</h2>
 					<div class="videos__media">
-						<button type="button" data-popup="#video" data-popup-youtube="k3pqwc2i2yo">
-							<img src="img/videos/01_1.webp" alt="Image">
+						<button type="button" class="videos__button" data-popup="#video" data-popup-youtube="k3pqwc2i2yo">
+							<img src="img/videos/01.webp" alt="Image">
+							<span class="play-button">
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="icon">▶</span>
+							</span>
 						</button>
-						<button type="button" data-popup="#video" data-popup-youtube="QCN4Pnuq520">
+						<button type="button" class="videos__button" data-popup="#video" data-popup-youtube="QCN4Pnuq520">
 							<img src="img/videos/02.webp" alt="Image">
+							<span class="play-button">
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="icon">▶</span>
+							</span>
 						</button>
-						<button type="button" data-popup="#video" data-popup-youtube="0Ig_WzNZ4Wc">
+						<button type="button" class="videos__button" data-popup="#video" data-popup-youtube="0Ig_WzNZ4Wc">
 							<img src="img/videos/03.webp" alt="Image">
+							<span class="play-button">
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="icon">▶</span>
+							</span>
 						</button>
-						<button type="button" data-popup="#video" data-popup-youtube="iTcpQixaMVI">
+						<button type="button" class="videos__button" data-popup="#video" data-popup-youtube="iTcpQixaMVI">
 							<img src="img/videos/04.webp" alt="Image">
+							<span class="play-button">
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="waves"></span>
+								<span class="icon">▶</span>
+							</span>
 						</button>
 					</div>
 				</div>
@@ -361,13 +385,204 @@
 					</div>
 				</div>
 			</section>
+			<section class="page__about-author about-author">
+				<div class="about-author__container">
+					<div class="about-author__content">
+						<h2 class="about-author__title title">Meet Pete</h2>
+						<div class="about-author__img">
+							<img src="img/meet_pete/photo.webp" alt="Image">
+						</div>
+						<p class="about-author__subtitle subtitle">Pete Williams is an entrepreneur, advisor and marketer who Forbes recently called, <q>one entrepreneur today that every marketer should be modelling,</q> while Inc. describes him as, <q>a savvy marketing strategist.</q></p>
+						<div class="about-author__text text">
+							<p>A Southern Region Finalist in the Ernst & Young Entrepreneur of the Year Program, a Small Business ICON (Best-in-Class) Recipient, and an Australian Business Award Winner for Marketing Excellence, he is the co-founder of numerous businesses across varying industries—from telecommunications services to e-commerce.</p>
+							<p>Having been referred to as “Australia’s Richard Branson” in media publications, Pete first made a name for himself when, at age twenty-one, he sold Australia’s version of Yankee Stadium, the Melbourne Cricket Ground, for under $500—which you can read about in his first book, How to Turn Your Million-Dollar Idea Into a Reality (2007).</p>
+							<p>Pete’s companies include Infiniti Telecommunications, SimplyHeadsets.com.au, SpringCom Telecommunications, and Preneur Group (<a href="https://www.preneurgroup.com/" target="_blank">www.PreneurGroup.com</a>), an advisory-consulting firm that guides business owners through the process of increasing profits, margins and other key indicators by using the 7 Levers approach to business growth.</p>
+							<p>Pete splits his time between Melbourne, Australia and California, USA with his wife Fleur and son Eli.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="page__where-buy where-buy">
+				<div class="where-buy__body">
+					<h3 class="where-buy__title">Order Your Copy of Cadence Today:</h3>
+					<ul class="where-buy__items">
+						<li class="where-buy__item">
+							<a href="https://bookshop.org/p/books/cadence-a-tale-of-fast-business-growth-pete-williams/6420267?ean=9781683509479&ref=https%3A%2F%2Fwww.cadencebook.com%2F&source=IndieBound&title=" target="_blank">
+								<img src="img/hero/where_buy/01.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="#" target="_blank">
+								<img src="img/hero/where_buy/02.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="https://www.barnesandnoble.com/w/cadence-pete-williams/1127552533?cjdata=MXxZfDB8WXww&ean=9781683509479&st=AFF&SID=Barnes+%26+Noble&2sid=Preneur+Group_8528383_NA&sourceId=AFFPreneur+Group&cjevent=63b22f08d59a11ef837dc03b0a18b8fc&dpid=tekz25v83" target="_blank">
+								<img src="img/hero/where_buy/03.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="https://www.booksamillion.com/p/Cadence/Pete-Williams/9781683509479?id=7169691661464" target="_blank">
+								<img src="img/hero/where_buy/04.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="https://www.amazon.com/Cadence-Tale-Fast-Business-Growth/dp/1683509471/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=prenemarke-20&linkId=56edcaf1fa52c20e5b1875f33172c4cc&language=en_US" target="_blank">
+								<img src="img/hero/where_buy/05.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="https://www.porchlightbooks.com/product/cadence-a-tale-of-fast-business-growth--pete-williams" target="_blank">
+								<img src="img/hero/where_buy/06.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="https://www.booktopia.com.au/cadence-pete-williams/book/9781683509479.html?SUBID1=&SUBID2=&clickid=3q21bzVnGxyKUYQxaA2JC0TpUksx3cVUtXjV0U0&bk_source_id=1198332&utm_campaign=Pete%20Williams&utm_medium=affiliate&utm_source=APD&bk_source=APD" target="_blank">
+								<img src="img/hero/where_buy/07.webp" alt="Image">
+							</a>
+						</li>
+						<li class="where-buy__item">
+							<a href="#" target="_blank">
+								<img src="img/hero/where_buy/08.webp" alt="Image">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250119142734"></script>
+	<!-- Документація: https://template.fls.guru/template-docs/modul-preloader.html -->
+	<div id="fls-preloader">
+		<!-- Скріпт прелоадера -->
+		<script>
+			function preloader() {
+				const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+				const preloaderContainer = document.querySelector('#fls-preloader');
+				if (preloaderImages.length) {
+					const preloaderStyleTemplate = `
+				<style>
+					* {
+						padding: 0px;
+						margin: 0px;
+						border: 0px;
+						box-sizing: border-box;
+					}
+					/* Головний блок */
+					.fls-preloader{
+						pointer-events: none;
+						z-index: -1;
+						position: fixed;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						display: flex;
+						justify-content:center;
+						align-items: center;
+					}
+					/* Блок з елементами */
+					.fls-preloader__body{
+						padding: 0.93rem;
+						max-width: 31.25rem;
+						display: flex;
+						flex-direction: column;
+					}
+					/* Блок з лічильником */
+					.fls-preloader__counter{
+						font-size: 5rem;
+					}
+					/* Прогресбар */
+					.fls-preloader__line{}
+					/* Лінія прогресбару */
+					.fls-preloader__line span{
+						display: inline-block;
+						transition: width 0.2s ease;
+						height: 0.8rem;
+						background-color: #f26522;
+					}
+					.lock body{
+						overflow: hidden;
+						touch-action: none;
+						overscroll-behavior: none;
+					}
+					.loading body>*:not(.fls-preloader){
+						opacity: 0;
+						visibility: hidden;
+					}
+					.loaded body>*:not(.fls-preloader){
+						transition: opacity 0.5s ease 0s;
+						opacity: 1;
+						visibility: visible;
+					}
+				</style>`;
+
+					document.head.insertAdjacentHTML("beforeend", preloaderStyleTemplate);
+
+					const preloaderTemplate = `
+					<div class="fls-preloader">
+						<div class="fls-preloader__body">
+							<div class="fls-preloader__counter">0%</div>
+							<div class="fls-preloader__line"><span></span></div>
+						</div>
+					</div>`;
+					document.body.insertAdjacentHTML("beforeend", preloaderTemplate);
+
+					const
+						preloader = document.querySelector('.fls-preloader'),
+						showPecentLoad = document.querySelector('.fls-preloader__counter'),
+						showLineLoad = document.querySelector('.fls-preloader__line span'),
+						htmlDocument = document.documentElement;
+
+					let imagesLoadedCount = counter = progress = 0;
+
+					htmlDocument.classList.add('loading');
+					htmlDocument.classList.add('lock');
+
+					preloaderImages.forEach(preloaderImage => {
+						const imgClone = document.createElement('img');
+						if (imgClone) {
+							imgClone.onload = imageLoaded;
+							imgClone.onerror = imageLoaded;
+							preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+						}
+					});
+
+					function setValueProgress(progress) {
+						showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+						showLineLoad ? showLineLoad.style.width = `${progress}%` : null;
+					}
+					showPecentLoad ? setValueProgress(progress) : null;
+
+					function imageLoaded() {
+						imagesLoadedCount++;
+						progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+						const intervalId = setInterval(() => {
+							counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+							counter >= 100 ? addLoadedClass() : null;
+						}, 10);
+					}
+
+					function addLoadedClass() {
+						htmlDocument.classList.add('loaded');
+						htmlDocument.classList.remove('lock');
+						htmlDocument.classList.remove('loading');
+						setInterval(() => {
+							preloader.remove();
+							preloaderContainer.remove();
+						}, 500);
+					}
+				} else {
+					preloaderContainer.remove();
+				}
+			}
+			preloader();
+		</script>
+	</div>
+	<script src="js/app.min.js?_v=20250119202142"></script>
 </body>
 
 </html>

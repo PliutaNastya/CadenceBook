@@ -212,7 +212,7 @@ body::after {
 }
 .popup__text iframe {
   width: 100%;
-  min-height: 50vh
+  min-height: 80vh
 }
 .ibg {
   width: 100%;
@@ -253,11 +253,81 @@ body::after {
 }
 .text p {
   font-weight: 500;
-  line-height: 1.3
+  line-height: 1.5
 }
 .text p:not(:last-child) {
   -webkit-margin-after: 1.25rem;
   margin-block-end: 1.25rem
+}
+.play-button {
+  display: block;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1);
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg,#9e034f .1%,#ff6b11 55.74%,#ffca61 116.5%);
+  border-radius: 50%;
+  box-shadow: 0 .25rem .375rem rgba(0,0,0,.1);
+  cursor: pointer;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s,-webkit-transform .3s
+}
+.icon {
+  display: block;
+  position: absolute;
+  font-size: 1.25rem;
+  color: var(--bg-accent);
+  z-index: 10;
+  transition: color .3s
+}
+.waves {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,148,42,.3);
+  border-radius: 50%;
+  -webkit-animation: wave 2s infinite ease-out;
+  animation: wave 2s infinite ease-out
+}
+.waves:nth-child(2) {
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s
+}
+.waves:nth-child(3) {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s
+}
+@-webkit-keyframes wave {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: .8
+  }
+  100% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+    opacity: 0
+  }
+}
+@keyframes wave {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: .8
+  }
+  100% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+    opacity: 0
+  }
 }
 .header {
   position: fixed;
@@ -286,43 +356,39 @@ body::after {
   z-index: 5;
   font-size: 1.75rem
 }
-.menu-open .header__logo {
-  color: var(--text-secondary)
-}
 .page__hero {
-  padding-block: 5rem;
-  -webkit-padding-after: 1.875rem;
-  padding-block-end: 1.875rem
+  -webkit-padding-before: 9.375rem;
+  padding-block-start: 9.375rem
 }
 .hero {
   position: relative;
-  min-height: 85svh
-}
-.hero__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%
-}
-.hero__bg img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center 30%;
-  object-position: center 30%;
-  aspect-ratio: 1.5/1
+  background: url(../img/hero/hero__bg.webp) center/cover fixed no-repeat
 }
 .hero__container {
   color: var(--text-inverse);
-  position: relative;
-  z-index: 2;
-  display: grid;
-  row-gap: .625rem
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem
 }
 .hero__content {
-  padding-block: 1.25rem
+  padding-block: 1.25rem;
+  flex: 0 1 40%
+}
+.hero__content *:last-child {
+  -webkit-margin-after: 0;
+  margin-block-end: 0
+}
+.hero__img {
+  flex: 0 0 50%;
+  aspect-ratio: 510/444
+}
+.hero__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
 }
 .hero__title {
   font-family: Oswald;
@@ -404,7 +470,7 @@ body::after {
   object-fit: contain
 }
 .book {
-  background: url(../img/book/book_bg.webp) 0 0/cover fixed no-repeat
+  background: url(../img/book/book_bg.webp) center/cover fixed no-repeat
 }
 .book__container {
   display: flex;
@@ -437,12 +503,29 @@ body::after {
   gap: 1.25rem;
   grid-template-columns: repeat(3,1fr)
 }
+.videos {
+  background: url(../img/videos/videos_bg.webp) center/cover fixed no-repeat
+}
 .videos__title {
+  color: var(--text-inverse);
   text-align: center
 }
 .videos__media {
   display: grid;
-  grid-template-columns: repeat(3,1fr)
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem
+}
+.videos__media button {
+  position: relative
+}
+.videos__media button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,5,28,.4431372549)
 }
 .videos__media button img {
   width: 100%;
@@ -450,6 +533,9 @@ body::after {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover
+}
+.reviews {
+  background: url(../img/book/book_bg.webp) center/cover fixed no-repeat
 }
 .reviews__title {
   text-align: center
@@ -493,6 +579,34 @@ body::after {
 }
 .info-reviews__about-author {
   font-weight: 300
+}
+.about-author {
+  background: url(../img/meet_pete/meet_pete_bg.webp) center/cover no-repeat
+}
+.about-author__content {
+  color: var(--text-inverse);
+  text-align: center
+}
+.about-author__img {
+  max-width: 25rem;
+  margin-inline: auto;
+  aspect-ratio: 566/695
+}
+.about-author__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain
+}
+.about-author__title {
+  color: var(--text-accent)
+}
+.about-author__text p {
+  font-weight: 400
+}
+.about-author__text p a {
+  color: var(--text-accent);
+  transition: color .3s
 }
 .swiper {
   overflow: hidden
@@ -1138,22 +1252,6 @@ button.swiper-pagination-bullet {
   .text p {
     font-size: 1.125rem
   }
-  .hero__bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.3647058824)
-  }
-  .hero__container {
-    min-height: 85svh
-  }
-  .hero__content {
-    width: 50%;
-    justify-self: flex-end
-  }
   .where-buy {
     align-self: end
   }
@@ -1164,11 +1262,16 @@ button.swiper-pagination-bullet {
     -o-object-position: right;
     object-position: right
   }
-}
-@media (min-width:87.5em) {
-  .hero__content {
-    -webkit-padding-before: 6.25rem;
-    padding-block-start: 6.25rem
+  .about-author__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+  }
+  .about-author__content {
+    flex: 0 0 50%
+  }
+  .about-author__img {
+    display: none
   }
 }
 @media (min-width:75em) {
@@ -1181,6 +1284,13 @@ button.swiper-pagination-bullet {
   .subtitle {
     font-size: 1.375rem
   }
+  .play-button {
+    width: 3.375rem
+  }
+  .page__hero {
+    -webkit-padding-after: 9.375rem;
+    padding-block-end: 9.375rem
+  }
   .page__book {
     padding-block: 5rem
   }
@@ -1190,15 +1300,18 @@ button.swiper-pagination-bullet {
   .page__reviews {
     padding-block: 5rem
   }
+  .page__about-author {
+    padding-block: 5rem
+  }
+  .hero__content * {
+    -webkit-margin-after: 1.875rem;
+    margin-block-end: 1.875rem
+  }
   .hero__title {
     font-size: 5.25rem
   }
   .hero__subtitle {
     font-size: 1.75rem
-  }
-  .hero__subtitle:not(:last-child) {
-    -webkit-margin-after: 1.875rem;
-    margin-block-end: 1.875rem
   }
   .hero__text p {
     font-size: 1.25rem
@@ -1227,6 +1340,18 @@ button.swiper-pagination-bullet {
     -webkit-margin-after: 1.875rem;
     margin-block-end: 1.875rem
   }
+  .about-author__img:not(:last-child) {
+    -webkit-margin-after: 1.875rem;
+    margin-block-end: 1.875rem
+  }
+  .about-author__title:not(:last-child) {
+    -webkit-margin-after: 1.875rem;
+    margin-block-end: 1.875rem
+  }
+  .about-author__subtitle:not(:last-child) {
+    -webkit-margin-after: 1.875rem;
+    margin-block-end: 1.875rem
+  }
 }
 @media (max-width:20em) {
   .title {
@@ -1234,6 +1359,13 @@ button.swiper-pagination-bullet {
   }
   .subtitle {
     font-size: 1.125rem
+  }
+  .play-button {
+    width: 2.5rem
+  }
+  .page__hero {
+    -webkit-padding-after: 2.5rem;
+    padding-block-end: 2.5rem
   }
   .page__book {
     padding-block: 2.5rem
@@ -1244,15 +1376,18 @@ button.swiper-pagination-bullet {
   .page__reviews {
     padding-block: 2.5rem
   }
+  .page__about-author {
+    padding-block: 2.5rem
+  }
+  .hero__content * {
+    -webkit-margin-after: .9375rem;
+    margin-block-end: .9375rem
+  }
   .hero__title {
     font-size: 4.75rem
   }
   .hero__subtitle {
     font-size: 1.125rem
-  }
-  .hero__subtitle:not(:last-child) {
-    -webkit-margin-after: .9375rem;
-    margin-block-end: .9375rem
   }
   .where-buy__title {
     font-size: 1.25rem
@@ -1273,6 +1408,18 @@ button.swiper-pagination-bullet {
     -webkit-margin-after: .9375rem;
     margin-block-end: .9375rem
   }
+  .about-author__img:not(:last-child) {
+    -webkit-margin-after: .9375rem;
+    margin-block-end: .9375rem
+  }
+  .about-author__title:not(:last-child) {
+    -webkit-margin-after: .9375rem;
+    margin-block-end: .9375rem
+  }
+  .about-author__subtitle:not(:last-child) {
+    -webkit-margin-after: .9375rem;
+    margin-block-end: .9375rem
+  }
 }
 @media (max-width:62.06125em) {
   .book__container {
@@ -1285,6 +1432,9 @@ button.swiper-pagination-bullet {
   .book__container {
     flex-direction: column
   }
+  .about-author {
+    background-position: 30% center
+  }
 }
 @media (max-width:47.99875em) {
   .menu__body {
@@ -1295,7 +1445,7 @@ button.swiper-pagination-bullet {
     top: 0;
     overflow: auto;
     padding: 9.375rem .9375rem 1.875rem .9375rem;
-    background-color: #eee;
+    background-color: var(--bg-primary);
     transition: left .3s
   }
   .menu__body::before {
@@ -1303,7 +1453,7 @@ button.swiper-pagination-bullet {
     position: fixed;
     width: 100%;
     height: 4.375rem;
-    background-color: #eee;
+    background-color: var(--bg-primary);
     left: 100%;
     top: 0;
     transition: left .3s;
@@ -1327,9 +1477,6 @@ button.swiper-pagination-bullet {
     font-size: 2.125rem;
     text-align: right
   }
-  .menu-open .menu__link {
-    color: var(--text-secondary)
-  }
   .icon-menu {
     display: block;
     position: relative;
@@ -1347,11 +1494,6 @@ button.swiper-pagination-bullet {
     width: 100%;
     height: .125rem;
     background-color: var(--text-inverse)
-  }
-  .menu-open .icon-menu span,
-  .menu-open .icon-menu::after,
-  .menu-open .icon-menu::before {
-    background-color: var(--text-secondary)
   }
   .icon-menu::before {
     top: 0
@@ -1379,26 +1521,26 @@ button.swiper-pagination-bullet {
     -webkit-margin-before: -5rem;
     margin-block-start: -5rem
   }
-  .hero__bg {
-    position: static
+  .hero__container {
+    flex-direction: column
   }
-  .hero__bg img {
-    aspect-ratio: 1.1/1
-  }
-  .hero__subtitle {
-    color: var(--text-secondary)
+  .hero__content {
+    text-align: center
   }
   .hero__text p {
     font-size: 1rem
   }
-  .hero__text {
-    color: var(--text-secondary)
+  .hero__award {
+    margin-inline: auto
   }
   .videos__media {
     grid-template-columns: 1fr
   }
   .swiper-slide {
     height: auto
+  }
+  .about-author {
+    background: url(../img/hero/hero__bg.webp) center/cover no-repeat
   }
 }
 @media (max-width:47.99875em)and (any-hover:none) {
@@ -1421,6 +1563,13 @@ button.swiper-pagination-bullet {
   .subtitle {
     font-size: clamp(1.125rem ,1.0340909091rem + .4545454545vw ,1.375rem)
   }
+  .play-button {
+    width: clamp(2.5rem ,2.1818181818rem + 1.5909090909vw ,3.375rem)
+  }
+  .page__hero {
+    -webkit-padding-after: clamp(2.5rem ,.0000000625rem + 12.5vw ,9.375rem);
+    padding-block-end: clamp(2.5rem ,.0000000625rem + 12.5vw ,9.375rem)
+  }
   .page__book {
     padding-block: clamp(2.5rem ,1.5909090909rem + 4.5454545455vw ,5rem)
   }
@@ -1430,15 +1579,18 @@ button.swiper-pagination-bullet {
   .page__reviews {
     padding-block: clamp(2.5rem ,1.5909090909rem + 4.5454545455vw ,5rem)
   }
+  .page__about-author {
+    padding-block: clamp(2.5rem ,1.5909090909rem + 4.5454545455vw ,5rem)
+  }
+  .hero__content * {
+    -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
+    margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
+  }
   .hero__title {
     font-size: clamp(4.75rem ,4.5681818182rem + .9090909091vw ,5.25rem)
   }
   .hero__subtitle {
     font-size: clamp(1.125rem ,.8977272727rem + 1.1363636364vw ,1.75rem)
-  }
-  .hero__subtitle:not(:last-child) {
-    -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
-    margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
   }
   .where-buy__title {
     font-size: clamp(1.25rem ,1.0681818182rem + .9090909091vw ,1.75rem)
@@ -1459,6 +1611,18 @@ button.swiper-pagination-bullet {
     -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
     margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
   }
+  .about-author__img:not(:last-child) {
+    -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
+    margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
+  }
+  .about-author__title:not(:last-child) {
+    -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
+    margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
+  }
+  .about-author__subtitle:not(:last-child) {
+    -webkit-margin-after: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem);
+    margin-block-end: clamp(.9375rem ,.5965909091rem + 1.7045454545vw ,1.875rem)
+  }
 }
 @media (min-width:62.06125em)and (max-width:75em) {
   .book__container {
@@ -1471,8 +1635,15 @@ button.swiper-pagination-bullet {
   .menu__link:hover::after {
     width: 100%
   }
+  .play-button:hover {
+    -webkit-transform: translate(-50%,-50%) scale(1.03);
+    transform: translate(-50%,-50%) scale(1.03)
+  }
   .where-buy__item:hover a {
     -webkit-transform: scale(1.03);
     transform: scale(1.03)
+  }
+  .about-author__text p a:hover {
+    color: #f88f5f
   }
 }
