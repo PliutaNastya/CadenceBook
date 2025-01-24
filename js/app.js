@@ -4421,6 +4421,96 @@
     }
     const da = new DynamicAdapt("max");
     da.init();
+    document.addEventListener("DOMContentLoaded", (() => {
+        const audio = document.querySelector("audio");
+        const playButton = document.querySelector(".toggle-play");
+        const timeline = document.querySelector(".timeline");
+        const progress = document.querySelector(".progress");
+        const currentTimeElem = document.querySelector(".current");
+        const lengthElem = document.querySelector(".length");
+        const volumeButtonFull = document.querySelector(".volume-full");
+        const volumeButtonStop = document.querySelector(".volume-stop");
+        const volumeSlider = document.querySelector(".volume-slider .volume-percentage");
+        let lastVolume = audio.volume;
+        audio.addEventListener("loadedmetadata", (() => {
+            lengthElem.textContent = formatTime(audio.duration);
+        }));
+        playButton.addEventListener("click", (() => {
+            if (audio.paused) {
+                audio.play();
+                playButton.classList.remove("play");
+                playButton.classList.add("pause");
+            } else {
+                audio.pause();
+                playButton.classList.remove("pause");
+                playButton.classList.add("play");
+            }
+        }));
+        audio.addEventListener("timeupdate", (() => {
+            const progressPercent = audio.currentTime / audio.duration * 100;
+            progress.style.width = `${progressPercent}%`;
+            currentTimeElem.textContent = formatTime(audio.currentTime);
+        }));
+        timeline.addEventListener("click", (e => {
+            const timelineWidth = timeline.offsetWidth;
+            const clickX = e.offsetX;
+            const newTime = clickX / timelineWidth * audio.duration;
+            audio.currentTime = newTime;
+        }));
+        volumeButtonFull.style.display = "block";
+        volumeButtonStop.style.display = "none";
+        volumeButtonFull.addEventListener("click", (() => {
+            lastVolume = audio.volume;
+            audio.volume = 0;
+            volumeButtonFull.style.display = "none";
+            volumeButtonStop.style.display = "block";
+            volumeSlider.style.width = "0%";
+        }));
+        volumeButtonStop.addEventListener("click", (() => {
+            audio.volume = lastVolume;
+            volumeButtonFull.style.display = "block";
+            volumeButtonStop.style.display = "none";
+            volumeSlider.style.width = `${lastVolume * 100}%`;
+        }));
+        const updateVolume = e => {
+            const sliderWidth = volumeSlider.parentElement.offsetWidth;
+            const clickX = e.offsetX || e.touches[0].clientX - volumeSlider.parentElement.getBoundingClientRect().left;
+            const newVolume = Math.min(Math.max(clickX / sliderWidth, 0), 1);
+            audio.volume = newVolume;
+            volumeSlider.style.width = `${newVolume * 100}%`;
+            if (newVolume === 0) {
+                volumeButtonFull.style.display = "none";
+                volumeButtonStop.style.display = "block";
+            } else {
+                volumeButtonFull.style.display = "block";
+                volumeButtonStop.style.display = "none";
+            }
+            lastVolume = newVolume;
+        };
+        volumeSlider.addEventListener("mousedown", (e => {
+            e.preventDefault();
+            document.addEventListener("mousemove", updateVolume);
+            document.addEventListener("mouseup", (() => {
+                document.removeEventListener("mousemove", updateVolume);
+            }), {
+                once: true
+            });
+        }));
+        volumeSlider.addEventListener("touchstart", (e => {
+            e.preventDefault();
+            document.addEventListener("touchmove", updateVolume);
+            document.addEventListener("touchend", (() => {
+                document.removeEventListener("touchmove", updateVolume);
+            }), {
+                once: true
+            });
+        }));
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+            return `${minutes}:${seconds}`;
+        }
+    }));
     window["FLS"] = true;
     menuInit();
     pageNavigation();
